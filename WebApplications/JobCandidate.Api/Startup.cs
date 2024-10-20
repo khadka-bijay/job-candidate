@@ -1,4 +1,6 @@
-﻿using JobCandidate.Api.Infrastructure;
+﻿using FluentValidation.AspNetCore;
+using JobCandidate.Api.AutoMapper;
+using JobCandidate.Api.Infrastructure;
 
 namespace JobCandidate.Api
 {
@@ -11,8 +13,10 @@ namespace JobCandidate.Api
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddServices(_configuration);
             services.AddControllers();
+            services.AddServices(_configuration);
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddFluentValidationAutoValidation();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
         }

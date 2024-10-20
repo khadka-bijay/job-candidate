@@ -28,5 +28,10 @@ namespace JobCandidate.Data.Repository.Base
         {
             _dbSet.Update(entity);
         }
+
+        public DbSet<T> Table()
+        {
+            return _dbSet;
+        }
     }
 }
